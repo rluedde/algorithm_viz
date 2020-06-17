@@ -10,20 +10,34 @@ with open("book_data.html", "w") as file:
 # I will go to each page and extract the lenght and titles of each book
 pages = 2
 book_links = []
-for i in range(pages):
-    source = requests.get(f"https://www.barnesandnoble.com/b/new-releases/_/N-1oyg?Nrpp=40&page={i + 1}").text
-    soup = BeautifulSoup(source, "lxml")
-    # Using inspector tool, these are the div tags that contain the anchor tags
-    # to the page with more book data on it.
-    book_data = soup.find_all("div", {"class": "product-shelf-title product-info-title pt-xs"})
+source = requests.get("https://www.hamiltonbook.com/books").text
+soup = BeautifulSoup(source, "lxml")
 
-    for book in book_data:
-        anchor = book.find("a")
-        book_links.append("www.barnesandnoble.com" + anchor.get("href"))
+# Using inspector tool, these are the anchor tags that contain links
+# to the page with more book data on it.
+book_lis = soup.find_all("li", class_ = "product-listing__item grid-list__item col-xxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3")
+for li in book_lis:
+    anchor = li.find("a") # find is for tags
+    book_links.append(anchor.get("href")) # get is for attributes
+
+# Now that we have a list of links to books (book_links), it's time to grab
+# the meta data from each of those bookds.
+"""
+for book_link in book_links:
+    print(book_link)
+    source = str(requests.get(book_link))
+    soup = BeautifulSoup(source, "lxml")
+    print(soup.prettify())
+
+source = requests.get(book_links[0]).text
+soup = BeautifulSoup(source, "lxml")
+print(soup.prettify())
+print(book_links)
 # Why tf these different
 print(len(set(book_links)))
 print(len(book_links))
 
+"""
 
 
 
