@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import csv
+import re
 
 
 # Make sure that we append our HTML data on an empty file
@@ -23,17 +24,32 @@ for li in book_lis:
 
 # Now that we have a list of links to books (book_links), it's time to grab
 # the meta data from each of those bookds.
-
+# I guess I care about author, title, and page count
 with open("book_data.csv", "w") as data:
     csvwriter = csv.writer(data)
     csvwriter.writerow(("author", "title", "pages"))
+    no_pages = 0
     for book_link in book_links:
         source = requests.get(book_link).text
+        # If there's no author, write the row anyways but put 
+        # N/A as the author
+        try:
+            author = soup.find("a", class_ = "product-detail-author").contents[0]
+        except AttributeError:
+            author = "N/A"
         soup = BeautifulSoup(source, "lxml")
-        title = soup.find("h1", class_ = "product-detail-page-main-heading page-main-heading").contents
-        author = soup.find("a", class_ = "product-detail-author").contents
-        pages = soup.find_all("span", class_ = "item")[1].contents
-        csvwriter.writerow((author, title, pages))
+        title = soup.find("h1", class_ = "product-detail-page-main-heading page-main-heading").contents[0]
+        # If there isn't a page count, don't write a row
+        try:
+            unclean_pages = soup.find_all("span", class_ = "item")[1].contents[1]
+            digits = re.compile(r'\d+')
+            cleaned_pages = digits.findall(unclean_pages)[0]
+        except IndexError:
+            continue
+
+        csvwriter.writerow((author, title, cleaned_pages))
+
+    
 
 
 
