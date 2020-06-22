@@ -32,7 +32,7 @@ function getBookArray(table, numBooks, filterThreshhold, maxLen) {
 function setup() {
     createCanvas(1000, 1000);
     background(100);
-    frameRate(3);
+    frameRate(2);
     maxLen = Math.max(...table.getColumn('pages').map(Number).filter(
         num => num <= 1000
     ));
@@ -45,6 +45,5 @@ function setup() {
 function draw() {
     // find the max of all books of length <= 1000 pages (outliers)
     bookArray = algo.swap(0, 1, bookArray)
-    print("hi")
 }
 

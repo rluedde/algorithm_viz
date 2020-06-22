@@ -1,6 +1,6 @@
 class Book {
     constructor(length, title, max_len) {
-        this.length = length;
+        this.length = parseInt(length);
         this.height = 10;
         this.color = this.getBookColor(length, max_len)
         this.title = title;

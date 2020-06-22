@@ -21,4 +21,30 @@ class AlgoBase {
         }
         redraw()
     }
+
+    //////////////// "operator overloads" ///////////////////
+
+    lte(b1, b2) {
+        return b1.length <= b2.length
+    }
+
+    gte(b1, b2) {
+        return b1.length >= b2.length
+    }
+
+    lt(b1, b2) {
+        return b1.length < b2.length
+    }
+
+    gt(b1, b2) {
+        return b1.length > b2.length
+    }
+
+    equal(b1, b2) {
+        return b1.length === b2.length
+    }
+
+    ////////////////////////////////////////////////////
+
 }
+
