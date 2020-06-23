@@ -33,17 +33,18 @@ function setup() {
     createCanvas(1000, 1000);
     background(100);
     frameRate(2);
+    noLoop();
+    // find the max of all books of length <= 1000 pages (outliers)
     maxLen = Math.max(...table.getColumn('pages').map(Number).filter(
         num => num <= 1000
     ));
     numBooks = table.getRowCount();
     bookArray = getBookArray(table, numBooks, filterThreshhold, maxLen);
-    algo = new AlgoBase(bookArray)
+    algo = new BubbleSort(bookArray)
 }
 
 
 function draw() {
-    // find the max of all books of length <= 1000 pages (outliers)
-    bookArray = algo.swap(0, 1, bookArray)
+    algo.sort()
 }
 

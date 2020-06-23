@@ -1,18 +1,18 @@
 class Book {
-    constructor(length, title, max_len) {
-        this.length = parseInt(length);
+    constructor(pages, title, max_len) {
+        this.pages = parseInt(pages);
         this.height = 10;
-        this.color = this.getBookColor(length, max_len)
+        this.color = this.getBookColor(pages, max_len)
         this.title = title;
     }
     
-    getBookColor(length, max_len) {
+    getBookColor(pages, max_len) {
     // return an RGB color on a gradient
     // reds are longer, greens are shorter
-    // need maximum book length in order to have a cap
+    // need maximum book pages in order to have a cap
     // on the color!!!!.
-    let R = Math.floor(length / max_len * 100)
-    let G = Math.floor((1 - (length / max_len)) * 100)
+    let R = Math.floor(pages / max_len * 100)
+    let G = Math.floor((1 - (pages / max_len)) * 100)
     let B = 0
     return [R, G, B]
 
@@ -24,7 +24,7 @@ class Book {
         // in fill
         fill(...this.color);
         noStroke()
-        rect(10, this.height * (index + 1), this.length, this.height);
+        rect(10, this.height * (index + 1), this.pages, this.height);
         // receive what position in the array the book is and 
         // build a rectangle at that position 
     }
