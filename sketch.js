@@ -14,22 +14,23 @@ function preload() {
     table = loadTable('assets/book_data.csv', 'csv', 'header');
 }
 
+
 function setup() {
     // settings
     frameRate(2);
-    noLoop();
 
     // find the max of all books of length <= 1000 pages (outliers)
     maxLen = Math.max(...table.getColumn('pages').map(Number).filter(
         num => num <= 1000
     ));
     numBooks = table.getRowCount();
+    let margin = 20
     
     // dynamic settings
     // SWITCH WIDTH AND HEIGHT SO THE BOOKS ARE VERTICAL!
-    createCanvas(maxLen + 20, 910);
+    createCanvas(maxLen + (2*  margin), 910 + margin);
     background(100);
 
-    algo = new BubbleSort(table, numBooks, filterThreshhold, maxLen)
+    algo = new BubbleSort(table, numBooks, filterThreshhold, maxLen, margin)
     algo.sort()
 }

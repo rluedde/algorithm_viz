@@ -16,8 +16,6 @@ class BubbleSort extends AlgoBase {
                 // DOESN'T STOP WHEN ALL THE WAY SORTED!
             }
         }
-        print(fs)
-        print(this.arr)
 
     }
 }
