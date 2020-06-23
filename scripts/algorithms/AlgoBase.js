@@ -43,8 +43,8 @@ class AlgoBase {
 
     // this hasn't been tested so idk if it works
     checkSorted() {
-        for (var i = 1; i < this.arr.length; i++){
-            if (this.lte(this.arr[i], this.arr[i - 1])) {
+        for (var i = 1; i < this.arr.length; i++) {
+            if (this.gt(this.arr[i - 1], this.arr[i])) {
                 return false
             }
         }

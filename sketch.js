@@ -31,5 +31,5 @@ function setup() {
     background(100);
 
     algo = new BubbleSort(table, numBooks, filterThreshhold, maxLen)
-    //algo.sort()
+    algo.sort()
 }
