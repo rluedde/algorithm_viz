@@ -1,8 +1,10 @@
 class AlgoBase {
 
-    constructor(arr) {
-        this.arr = arr
+    constructor(table, numBooks, filterThreshhold, maxLen) {
+        // an array of Book objects
+        this.arr = this.getBookArray(table, numBooks, filterThreshhold, maxLen) 
     }
+
 
     // swap Book at fst with Book at sec 
     swap(fst, sec, arr) {
@@ -10,6 +12,24 @@ class AlgoBase {
         [arr[fst], arr[sec]] = [arr[sec], arr[fst]];
         return arr;
     }
+    
+    
+    getBookArray(table, numBooks, filterThreshhold, maxLen) {
+        let bookArray = [];
+        let pages_r;
+        let title_r;
+        let book_r;
+        for (var r = 0; r < numBooks; r++) {
+            pages_r = table.getNum(r, "pages")
+            if (pages_r < filterThreshhold) {
+                title_r = table.getString(r, "title");
+                book_r = new Book(pages_r, title_r, maxLen);
+                bookArray.push(book_r);
+            }
+        }
+        return bookArray;
+    }
+
 
     // draw the current array to the canvas 
     showState() {

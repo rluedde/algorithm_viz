@@ -18,7 +18,7 @@ class Book {
 
     }
 
-
+    // SWITCH WIDTHS AND HEIGTHS SO THIS IS MORE SEEABLE!!!!!!!!!
     show(index) {
         // probably use this.color as an array and then use the spread op 
         // in fill
