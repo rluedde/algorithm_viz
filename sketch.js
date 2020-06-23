@@ -41,10 +41,10 @@ function setup() {
     numBooks = table.getRowCount();
     bookArray = getBookArray(table, numBooks, filterThreshhold, maxLen);
     algo = new BubbleSort(bookArray)
+    algo.sort()
 }
 
 
 function draw() {
-    algo.sort()
 }
 
