@@ -1,7 +1,7 @@
 class Book {
     constructor(pages, title, max_len, margin) {
         this.pages = parseInt(pages);
-        this.height = 10;
+        this.width = 10;
         this.color = this.getBookColor(pages, max_len);
         this.title = title;
         this.margin = margin;
@@ -20,16 +20,16 @@ class Book {
     }
 
     // SWITCH WIDTHS AND HEIGTHS SO THIS IS MORE SEEABLE!!!!!!!!!
-    show(index) {
+    show(index, maxLen) {
         // probably use this.color as an array and then use the spread op 
         // in fill
-        this.left = this.margin;
-        this.right = this.left + this.pages;
-        this.top = this.height * (index) + this.margin;
-        this.bottom = this.top + this.height;
+        this.bottom = this.margin + maxLen;
+        this.top = this.bottom - this.pages;
+        this.left = this.width * (index) + this.margin;
+        this.right = this.top + this.width;
         fill(...this.color);
         noStroke();
-        rect(this.left, this.top, this.pages, this.height);
+        rect(this.left, this.top, this.width, this.pages);
     }
 
 

@@ -35,7 +35,7 @@ class AlgoBase {
     showState() {
         background(100)
         for (var i = 0; i < this.arr.length; i++){
-            this.arr[i].show(i)
+            this.arr[i].show(i, maxLen)
         }
         redraw()
     }
