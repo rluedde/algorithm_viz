@@ -4,11 +4,7 @@
 // https://stackoverflow.com/questions/1069666/sorting-object-property-by-values
 
 let table;
-let maxLen;
-let numBooks;
-let bookArray;
 let filterThreshhold = 1000;
-
 
 function preload() {
     table = loadTable('assets/book_data.csv', 'csv', 'header');
@@ -19,13 +15,21 @@ function setup() {
     // settings
     frameRate(2);
     // only keep books <= 1000 pages
-    let tableObj = table.getArray().filter(el => parseInt(el[2]) <= 1000);
-    console.log(tableObj)
+    let tableArr = table.getArray().filter(el => parseInt(el[2]) <= filterThreshhold);
+    console.log(tableArr)
 
-    maxLen = Math.max(...table.getColumn('pages').map(Number).filter(
-        num => num <= 1000
+    let maxLen = Math.max(...table.getColumn('pages').map(Number).filter(
+        num => num <= filterThreshhold
     ));
-    numBooks = table.getRowCount();
+
+    let pagesArr = []
+    tableArr.forEach(el => pagesArr.push(parseInt(el[2])))
+
+    let titleArr = []
+    tableArr.forEach(el => titleArr.push(el[1]))
+    console.log(titleArr)
+
+    let numBooks = tableArr.length;
     let margin = 20
     let width = 10
     

@@ -3,6 +3,7 @@ class AlgoBase {
     constructor(table, numBooks, filterThreshhold, maxLen, margin, width) {
         // an array of Book objects
         this.arr = this.getBookArray(table, numBooks, filterThreshhold, maxLen, margin, width) 
+        this.maxLen = maxLen
     }
 
 
@@ -35,7 +36,7 @@ class AlgoBase {
     showState() {
         background(100)
         for (var i = 0; i < this.arr.length; i++){
-            this.arr[i].show(i, maxLen)
+            this.arr[i].show(i, this.maxLen)
         }
         redraw()
     }
