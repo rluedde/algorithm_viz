@@ -18,8 +18,10 @@ function preload() {
 function setup() {
     // settings
     frameRate(2);
+    // only keep books <= 1000 pages
+    let tableObj = table.getArray().filter(el => parseInt(el[2]) <= 1000);
+    console.log(tableObj)
 
-    // find the max of all books of length <= 1000 pages (outliers)
     maxLen = Math.max(...table.getColumn('pages').map(Number).filter(
         num => num <= 1000
     ));
