@@ -25,6 +25,7 @@ function setup() {
     ));
     numBooks = table.getRowCount();
     let margin = 20
+    let width = 10
     
     // dynamic settings
     // SWITCH WIDTH AND HEIGHT SO THE BOOKS ARE VERTICAL!
@@ -33,7 +34,7 @@ function setup() {
     createCanvas(canvL, canvW);
     background(100);
 
-    algo = new BubbleSort(table, numBooks, filterThreshhold, maxLen, margin)
+    algo = new BubbleSort(table, numBooks, filterThreshhold, maxLen, margin, width)
     algo.sort()
 }
 

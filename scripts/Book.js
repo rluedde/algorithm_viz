@@ -1,7 +1,7 @@
 class Book {
-    constructor(pages, title, max_len, margin) {
+    constructor(pages, title, max_len, margin, width) {
         this.pages = parseInt(pages);
-        this.width = 10;
+        this.width = width;
         this.color = this.getBookColor(pages, max_len);
         this.title = title;
         this.margin = margin;
@@ -25,7 +25,7 @@ class Book {
         // in fill
         this.bottom = this.margin + maxLen;
         this.top = this.bottom - this.pages;
-        this.left = this.width * (index) + this.margin;
+        this.left = this.width * index + this.margin;
         this.right = this.top + this.width;
         fill(...this.color);
         noStroke();
