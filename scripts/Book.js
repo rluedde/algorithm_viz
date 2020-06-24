@@ -34,9 +34,8 @@ class Book {
 
 
     clicked() {
-        if (mouseX <= this.right && mouseX >= this.left &&
-            mouseY >= this.top && mouseY <= this.bottom) {
-                console.log("you clicked me!")
+        if (mouseY >= this.top && mouseY <= this.bottom) {
+            console.log("you clicked me!")
         }
 
     }

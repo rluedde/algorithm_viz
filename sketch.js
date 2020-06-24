@@ -4,7 +4,12 @@
 // https://stackoverflow.com/questions/1069666/sorting-object-property-by-values
 
 let table;
-let filterThreshhold = 1000;
+const filterThreshhold = 1000;
+let canvL;
+let canvW;
+let margin = 20;
+let width = 10;
+let numBooks;
 
 function preload() {
     table = loadTable('assets/book_data.csv', 'csv', 'header');
@@ -29,19 +34,25 @@ function setup() {
     tableArr.forEach(el => titleArr.push(el[1]))
     console.log(titleArr)
 
-    let numBooks = tableArr.length;
-    let margin = 20
-    let width = 10
+    numBooks = tableArr.length;
     
     // dynamic settings
     // SWITCH WIDTH AND HEIGHT SO THE BOOKS ARE VERTICAL!
-    const canvL = width * numBooks + (2 * margin)
-    const canvW = maxLen + (2 * margin)
+    canvL = width * numBooks + (2 * margin)
+    canvW = maxLen + (2 * margin)
     createCanvas(canvL, canvW);
     background(100);
 
     algo = new BubbleSort(pagesArr, titleArr, maxLen, margin, width)
     algo.sort()
+}
+
+function mousePressed(){
+    // find what book the click is lined up with
+    const whichBook = Math.floor((mouseX - margin) / width);
+    if (whichBook > -1 && whichBook < numBooks) {
+        algo.arr[whichBook].clicked(mouseY);
+    }
 }
 
 function draw() {
