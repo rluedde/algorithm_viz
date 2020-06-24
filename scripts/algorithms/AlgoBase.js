@@ -1,8 +1,8 @@
 class AlgoBase {
 
-    constructor(table, numBooks, filterThreshhold, maxLen, margin, width) {
+    constructor(pagesArr, titleArr, maxLen, margin, width) {
         // an array of Book objects
-        this.arr = this.getBookArray(table, numBooks, filterThreshhold, maxLen, margin, width) 
+        this.arr = this.getBookArray(pagesArr, titleArr, maxLen, margin, width) 
         this.maxLen = maxLen
     }
 
@@ -15,18 +15,16 @@ class AlgoBase {
     }
     
     
-    getBookArray(table, numBooks, filterThreshhold, maxLen, margin, width) {
+    getBookArray(pagesArr, titleArr, maxLen, margin, width) {
         let bookArray = [];
         let pages_r;
         let title_r;
         let book_r;
-        for (var r = 0; r < numBooks; r++) {
-            pages_r = table.getNum(r, "pages")
-            if (pages_r < filterThreshhold) {
-                title_r = table.getString(r, "title");
-                book_r = new Book(pages_r, title_r, maxLen, margin, width);
-                bookArray.push(book_r);
-            }
+        for (var r = 0; r < pagesArr.length; r++) {
+            pages_r = pagesArr[r];
+            title_r = titleArr[r];
+            book_r = new Book(pages_r, title_r, maxLen, margin, width);
+            bookArray.push(book_r);
         }
         return bookArray;
     }

@@ -35,12 +35,12 @@ function setup() {
     
     // dynamic settings
     // SWITCH WIDTH AND HEIGHT SO THE BOOKS ARE VERTICAL!
-    const canvL = 910 + margin
+    const canvL = width * numBooks + (2 * margin)
     const canvW = maxLen + (2 * margin)
     createCanvas(canvL, canvW);
     background(100);
 
-    algo = new BubbleSort(table, numBooks, filterThreshhold, maxLen, margin, width)
+    algo = new BubbleSort(pagesArr, titleArr, maxLen, margin, width)
     algo.sort()
 }
 
