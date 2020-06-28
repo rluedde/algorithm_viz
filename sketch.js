@@ -47,14 +47,6 @@ function setup() {
     algo.sort()
 }
 
-function mousePressed(){
-    // find what book the click is lined up with
-    const whichBook = Math.floor((mouseX - margin) / width);
-    if (whichBook > -1 && whichBook < numBooks) {
-        algo.arr[whichBook].clicked(whichBook);
-    }
-}
-
 function draw() {
 
 }

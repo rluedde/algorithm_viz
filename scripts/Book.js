@@ -6,7 +6,6 @@ class Book {
         this.title = title;
         this.margin = margin;
         this.maxLen = maxLen
-        this.clickedSwitch = false
     }
     
     getBookColor(pages, max_len) {
@@ -29,30 +28,9 @@ class Book {
         this.top = this.bottom - this.pages;
         this.left = this.width * index + this.margin;
         this.right = this.top + this.width;
-        if (this.clickedSwitch) {
-            fill(190, 0, 0)
-
-        }
-        else {
-            fill(...this.color);
-        }
+        fill(...this.color);
         //noStroke();
         rect(this.left, this.top, this.width, this.pages);
-    }
-
-
-    clicked(index) {
-        if (mouseY >= this.top && mouseY <= this.bottom) {
-            console.log("you clicked me!")
-
-            if (this.clickedSwitch) {
-                this.clickedSwitch = false
-            }
-            else {
-                this.clickedSwitch = true
-            }
-            this.show(index, this.maxLen)
-        }
     }
 }
 
