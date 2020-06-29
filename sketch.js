@@ -42,7 +42,7 @@ function setup() {
     background(100);
 
     algo = new QuickSort(pagesArr, titleArr, maxLen, margin, width)
-    algo.sort(algo.arr)
+    algo.sort()
 }
 
 function draw() {
