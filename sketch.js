@@ -43,9 +43,9 @@ function setup() {
 
     algo = new QuickSort(pagesArr, titleArr, maxLen, margin, width)
     algo.sort()
-    algo.showState()
 }
 
 function draw() {
+
 }
 
