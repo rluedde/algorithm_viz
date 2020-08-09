@@ -1,56 +1,44 @@
 class QuickSort extends AlgoBase {
 
-    sort(arr = undefined, firstCall = true) {
+    sort(start = undefined, end = undefined, firstCall = true) {
+        // indices to sort on
         if (firstCall) {
-            arr = this.arr
+            start = 0;
+            end = this.arr.length - 1
         }
+
         // base case 
-        if (arr.length === 1 || arr.length === 0) {
-            return arr;
+        if (end <= start) {
+            console.log("returning")
+            return;
         };
 
-        let pivot = 0;
-        let i = this.get_i(arr, pivot);
-        let j = this.get_j(arr, pivot, arr.length);
-        console.log(i, j, pivot)
-
-        while (i < j) {
-            arr = this.swap(i, j, arr);
-            i = this.get_i(arr, pivot, i);
-            j = this.get_j(arr, pivot, j);
-        }
-
-        arr = this.swap(pivot, j, arr)
+        let division = this.partition(start, end)
         
-        pivot = j
-        // arr.splice(1,2,  ...["hi", "guys"])  
-        arr.splice(0, pivot, ...this.sort(arr.slice(0, pivot), false)) 
-        arr.splice(pivot + 1, arr.length - pivot - 1, ...this.sort(arr.slice(pivot + 1, arr.length), false))
-        this.showState() 
-        return arr
+        this.sort(start, division - 1, firstCall = false);
+        this.sort(division + 1, end, firstCall = false);
     }
 
-
-    // find things greater than the pivot
-    get_i(arr, pivot, i = 0) {
-        for(var a = i + 1; a < arr.length; a++) {
-            if (this.gt(arr[a], arr[pivot])) {
-                return a
+    partition(start, end){ 
+        // implementation of this guy's partitioning:
+        // https://www.youtube.com/watch?v=MZaf_9IZCrc
+        const p = end;
+        var i = start - 1;
+        var j = start;
+        while (j < p - 1) {
+            // normal swapping
+            if (this.lt(this.arr[j], this.arr[p])) {
+                i++
+                this.swap(i, j)
             }
+            j++;
         }
-        return 0
-    }
 
-
-    // find things less than the pivot
-    get_j(arr, pivot, j) {
-        for (var b = j - 1; b > 0; b--) {
-            if (this.lt(arr[b], arr[pivot])) {
-                return b 
-            }
+        // place the pivot at the proper location and return the location
+        if (j == p - 1) {
+            this.swap(i + 1, p)
+            return i + 1
         }
-        return 0
     }
-
 
 }

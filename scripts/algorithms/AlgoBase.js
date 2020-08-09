@@ -8,10 +8,9 @@ class AlgoBase {
 
 
     // swap Book at fst with Book at sec 
-    swap(fst, sec, arr) {
+    swap(fst, sec) {
         // destructuring assignment
-        [arr[fst], arr[sec]] = [arr[sec], arr[fst]];
-        return arr;
+        [this.arr[fst], this.arr[sec]] = [this.arr[sec], this.arr[fst]];
     }
     
     
