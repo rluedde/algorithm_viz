@@ -1,4 +1,5 @@
-class BubbleSort extends AlgoBase {
+import {AlgoBase} from "./AlgoBase.js"
+export class BubbleSort extends AlgoBase {
 
     async sort() {
         // go through books and swap them

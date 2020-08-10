@@ -1,4 +1,4 @@
-class Book {
+export class Book {
     constructor(pages, title, maxLen, margin, width) {
         this.pages = parseInt(pages);
         this.width = width;

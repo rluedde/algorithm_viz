@@ -43,17 +43,13 @@ function setup() {
     const infoElement = document.getElementById("information")
 
     canvasElement.style.setProperty("height", canvH);
-    canvasElement.style.setProperty("width", canvL);
+    canvasElement.style.setProperty("width", "60%");
     infoElement.style.setProperty("height", canvH);
     canvas.parent("canvas")
 
     background(100);
-
-    algo = new QuickSort(pagesArr, titleArr, maxLen, margin, width)
-    algo.sort()
 }
 
 function draw() {
-
 }
 
