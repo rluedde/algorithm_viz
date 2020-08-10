@@ -1,12 +1,48 @@
 <html>
   <head>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <meta name="viewport"
+    content="width=device-width,initial-scale=.9"/>
     <script src="sketch.js"></script>
     <script src="scripts/Book.js"></script>
     <script src="scripts/algorithms/AlgoBase.js"></script>
     <script src="scripts/algorithms/BubbleSort.js"></script>
     <script src="scripts/algorithms/QuickSort.js"></script>
+    <link rel="stylesheet" href="style.css"/>
   </head>
   <body>
+    <header id="header">Sorting Algorithm Visualizations</header>
+    <div id="container">
+      <section id="information">
+        <h1 class="heading"><u>How to Use</u></h1>
+          <ol class="list">
+            <li>
+              Select one of the sorting algorithms from the dropdown
+              menu below.
+            </li>
+            <li>
+              Click "Run" to watch the selected algorithm sort the array.
+            </li>
+          </ol>
+
+          <select id="algorithm">
+            <option value="" selected="selected">Select an Algorithm</option>
+            <option value="bubble">Bubble Sort</option>
+            <option value="quick">Quick Sort</option>
+          </select>
+          <button id="run_button">Run</button>
+
+        <h1 class="heading"><u>What the Array Represents</u></h1>
+          <ul class="list">
+            <li>
+              Each vertical rectangle represents the length of a book (in pages). 
+              The book data was scraped from a website, Hamiltonbook.com. Some outliers
+              have been removed.
+            </li>
+          </ul>
+      </section>
+      <section id="canvas"></section>
+      <section id="clear"></section>
+    </div>
   </body>
 </html>

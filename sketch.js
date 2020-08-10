@@ -35,10 +35,18 @@ function setup() {
     numBooks = tableArr.length;
     
     // dynamic settings
-    // SWITCH WIDTH AND HEIGHT SO THE BOOKS ARE VERTICAL!
     canvL = width * numBooks + (2 * margin)
-    canvW = maxLen + (2 * margin)
-    createCanvas(canvL, canvW);
+    canvH = maxLen + (2 * margin)
+    const canvas = createCanvas(canvL, canvH);
+
+    const canvasElement = document.getElementById("canvas")
+    const infoElement = document.getElementById("information")
+
+    canvasElement.style.setProperty("height", canvH);
+    canvasElement.style.setProperty("width", canvL);
+    infoElement.style.setProperty("height", canvH);
+    canvas.parent("canvas")
+
     background(100);
 
     algo = new QuickSort(pagesArr, titleArr, maxLen, margin, width)
