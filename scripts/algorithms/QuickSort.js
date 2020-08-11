@@ -1,4 +1,3 @@
-import {AlgoBase} from "./AlgoBase.js"
 class QuickSort extends AlgoBase {
 
     // the purpose of the firstCall argument is so I can just call
@@ -64,5 +63,3 @@ class QuickSort extends AlgoBase {
     }
 
 }
-
-export {QuickSort}

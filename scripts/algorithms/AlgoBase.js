@@ -1,4 +1,4 @@
-export class AlgoBase {
+class AlgoBase {
 
     constructor(pagesArr, titleArr, maxLen, margin, width) {
         // an array of Book objects
