@@ -25,8 +25,15 @@ class QuickSort extends AlgoBase {
         // after are larger
         let division = await this.partition(start, end)
         console.log(division, start, end)
-        this.sort(start, division - 1, firstCall = false);
-        this.sort(division + 1, end, firstCall = false);
+
+        // recursivly calls sort() method but wait for both things in the Array
+        // to resolve before returning "DONE"
+        // "DONE" will only get return once each time sort() gets called in the 
+        // wild - this is useful so only a single algorithm can be ran at 
+        // once over in sketch.js
+        await Promise.all([this.sort(start, division - 1, firstCall = false),
+                           this.sort(division + 1, end, firstCall = false)]);
+        return "DONE";
     }
 
     async partition(start, end){ 

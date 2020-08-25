@@ -1,7 +1,8 @@
 class BubbleSort extends AlgoBase {
 
     async sort() {
-        // go through books and swap them
+        // compare two books and if the one on the right is
+        // smaller, swap the two
         while (!this.checkSorted()) {
             for (var i = 1; i < this.arr.length; i++) {
                 let currBook = this.arr[i]
@@ -12,9 +13,7 @@ class BubbleSort extends AlgoBase {
                     // pause every ms so we can show everything getting sorted
                     await new Promise(r => setTimeout(r, 1));
                 }
-                // DOESN'T STOP WHEN ALL THE WAY SORTED!
             }
         }
-
     }
 }
