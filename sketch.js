@@ -6,13 +6,14 @@ function preload() {
 }
 
 function setup() {
-    const filterThreshhold = 1000;
     let canvL;
     let canvH;
     let margin = 20;
     let width = 10;
     const maxLen = json["maxLen"]
     const numBooks = json["numBooks"]
+    const pagesArr = json["pagesArr"]
+    const titleArr = json["titleArr"]
 
     // canvas can change size based on number of books that there are
     // in the data. But, since the amount of books stays the same and I'm
@@ -36,13 +37,14 @@ function setup() {
     infoElement.style.setProperty("height", canvH);
     canvas.parent("canvas")
 
+    var algo = new AlgoBase(pagesArr, titleArr, maxLen, margin, width)
+    algo.showState()
+
     // runs the correct sorting algorithms
     const runButton = document.getElementById("run_button");
     runButton.onclick = async function runAlgo() {
 
         // constants to be passed into the algorithm constructors
-        const pagesArr = json["pagesArr"]
-        const titleArr = json["titleArr"]
 
         var selector = document.getElementById("selector")
         var algoStr = selector.value
@@ -66,7 +68,6 @@ function setup() {
         // button so they cna run another algorithm
         document.getElementById("run_button").disabled = false;
     }
-    background(100);
 }
 
 function draw() {

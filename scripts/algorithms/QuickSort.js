@@ -24,7 +24,6 @@ class QuickSort extends AlgoBase {
         // all elements before division are smaller than it and all elements
         // after are larger
         let division = await this.partition(start, end)
-        console.log(division, start, end)
 
         // recursivly calls sort() method but wait for both things in the Array
         // to resolve before returning "DONE"
